@@ -22,4 +22,18 @@
 
       return $results;
     }
+    public function addProjets($data){
+      $this->db->query('INSERT INTO projets (nom_projet, user_id) VALUES(:nom_projet, :user_id)');
+      // Bind values
+      $this->db->bind(':nom_projet', $data['nom_projet']);
+      $this->db->bind(':user_id', $data['user_id']);
+      
+
+      // Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
   }

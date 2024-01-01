@@ -54,10 +54,10 @@ class Projets extends Controller
         }
     }
 
-    public function deleteProjet($projetId)
+    public function delete($id)
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if ($this->projetModel->deleteProjet($projetId)) {
+            if ($this->projetModel->deleteProjet($id)) {
                 flash('projet_message', 'Projet Deleted');
                 redirect('projets');
             } else {
@@ -113,16 +113,5 @@ class Projets extends Controller
         }
     }
 
-    public function show($id)
-    {
-        $projet = $this->projetModel->getProjetById($id);
-        $user = $this->userModel->getUserById($projet->user_id);
-
-        $data = [
-            'projet' => $projet,
-            'user' => $user
-        ];
-
-        $this->view('projets/show', $data);
-    }
+   
 }

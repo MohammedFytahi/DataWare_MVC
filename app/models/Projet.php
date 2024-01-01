@@ -39,10 +39,10 @@ class Projet
         }
     }
 
-    public function deleteProjet($projetId)
+    public function deleteProjet($id)
     {
         $this->db->query('DELETE FROM projets WHERE id_project = :projet_id');
-        $this->db->bind(':projet_id', $projetId);
+        $this->db->bind(':projet_id', $id);
 
         if ($this->db->execute()) {
             return true;

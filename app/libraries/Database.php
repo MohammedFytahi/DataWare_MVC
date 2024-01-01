@@ -80,4 +80,13 @@
     public function rowCount(){
       return $this->stmt->rowCount();
     }
+    public function delete($sql, $params = []){
+      $this->query($sql);
+
+      foreach($params as $param => $value){
+          $this->bind($param, $value);
+      }
+
+      return $this->execute();
+  }
   }
